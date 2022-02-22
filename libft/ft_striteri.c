@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 12:33:34 by zmunkhja          #+#    #+#             */
-/*   Updated: 2022/02/22 14:12:23 by zmunkhja         ###   ########.fr       */
+/*   Created: 2022/02/22 14:41:02 by zmunkhja          #+#    #+#             */
+/*   Updated: 2022/02/22 14:42:31 by zmunkhja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* checks for an alphanumeric character; it is equivalent to 
- *(isalpha(c) || isdigit(c)) */
+/*Applies the function f to each character of the string passed as argument, 
+and passing its index as first argument. Each character is passed by address 
+to f to be modified if necessary*/
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	if (ft_isdigit(c) || ft_isalpha(c))
-		return (1);
-	return (0);
+	unsigned int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		f(i, s + i);
+		i++;
+	}
 }

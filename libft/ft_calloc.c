@@ -6,7 +6,7 @@
 /*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 12:33:19 by zmunkhja          #+#    #+#             */
-/*   Updated: 2022/02/21 12:29:35 by zmunkhja         ###   ########.fr       */
+/*   Updated: 2022/02/22 14:26:32 by zmunkhja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	*ft_calloc(size_t count, size_t size)
 	ptr = malloc(count * size);
 	if (ptr == NULL)
 		return (ptr);
-	ft_bzero(ptr, size * count);
+	else
+		ft_bzero(ptr, size * count);
 	return (ptr);
 }

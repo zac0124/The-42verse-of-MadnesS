@@ -6,7 +6,7 @@
 /*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 15:06:08 by zmunkhja          #+#    #+#             */
-/*   Updated: 2022/02/21 14:35:23 by zmunkhja         ###   ########.fr       */
+/*   Updated: 2022/02/22 14:31:01 by zmunkhja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,27 @@ long as size is larger than 0 or, in the case of strlcat(),
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	i;
-	size_t	len;
 
-	len = ft_strlen(dst) + ft_strlen(src);
-	if (size <= ft_strlen(dst))
-		return (ft_strlen(src) + size);
-	while (*dst)
-		dst++;
 	i = 0;
-	while ((i < size - (len - ft_strlen(src)) - 1) && src[i])
+	if (size == 0)
 	{
-		dst[i] = src[i];
+		while (src[i])
+			i++;
+		return (i);
+	}
+	while (i < size - 1 && src[i] != '\0')
+	{
+		dest[i] = src[i];
 		i++;
 	}
-	dst[i] = '\0';
-	return (len);
+	if (i < size)
+		dest[i] = '\0';
+	while (src[i] != '\0')
+		i++;
+	return (i);
 }
 /*
 int main ()

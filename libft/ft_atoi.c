@@ -6,7 +6,7 @@
 /*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 12:32:11 by zmunkhja          #+#    #+#             */
-/*   Updated: 2022/02/21 12:05:34 by zmunkhja         ###   ########.fr       */
+/*   Updated: 2022/02/22 14:32:07 by zmunkhja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*The C library function int atoi(const char *str) converts 

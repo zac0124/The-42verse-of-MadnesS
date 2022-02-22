@@ -6,7 +6,7 @@
 /*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:44:59 by zmunkhja          #+#    #+#             */
-/*   Updated: 2022/02/21 15:16:37 by zmunkhja         ###   ########.fr       */
+/*   Updated: 2022/02/22 14:43:40 by zmunkhja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	*ft_strchr(const char *str, int c);
 char	*ft_strrchr(const char *str, int c);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 int		ft_strncmp(const char *s1, char *s2, size_t n);
 int		ft_atoi(const char *nptr);
 int		ft_isalpha(int c);
