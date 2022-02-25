@@ -23,7 +23,7 @@ CC = gcc #Flag for implicit rules
 CFLAGS = -g # Flag for implicit rules. Turn on debug info
 
 $(NAME): $(OBJS)
-	gcc $(FLAGS) -c $(SRCS) -I./
+	gcc $(FLAGS) -c $(SRCS)
 	ar rc $(NAME) $(OBJS)
 	echo "Done!"
 

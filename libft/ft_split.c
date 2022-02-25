@@ -47,7 +47,7 @@ static char	*make_string(char const *s, char c)
 	int		i;
 
 	i = 0;
-	while (s[i] && s[i] != c)
+	while (s[i] != c)
 		i++;
 	word = (char *)malloc (sizeof(char) * (i + 1));
 	if (!word)
