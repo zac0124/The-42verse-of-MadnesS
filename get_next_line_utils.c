@@ -6,7 +6,7 @@
 /*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 14:15:55 by zmunkhja          #+#    #+#             */
-/*   Updated: 2022/06/27 14:18:50 by zmunkhja         ###   ########.fr       */
+/*   Updated: 2022/06/29 13:00:45 by zmunkhja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 	size_t	j;
 	char	*str;
-	
+
 	str = (char *)malloc(sizeof(*s) * (len + 1));
 	if (str == 0)
 		return (NULL);
@@ -36,12 +36,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (str);
 }
 
-int	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (str[i] != '\0')
 		i++;
 	return (i);
 }
@@ -61,10 +61,10 @@ char	*ft_strchr(const char *s, int i)
 
 char	*ft_strdup(const char *s)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*str;
-	
+
 	i = 0;
 	j = ft_strlen(s);
 	str = (char *)malloc(sizeof(*str) * (j + 1));
@@ -79,25 +79,28 @@ char	*ft_strdup(const char *s)
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	i;
-	int	j;
-	char	*str;
+	char	*joint;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (str == NULL)
+	if (!s1 || !s2)
+		return (NULL);
+	joint = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!joint)
 		return (NULL);
 	while (s1[i] != '\0')
 	{
-		str[i] = s1[i];
+		joint[i] = s1[i];
 		i++;
 	}
 	while (s2[j] != '\0')
 	{
-		str[i + j] = s2[j];
+		joint[i] = s2[j];
+		i++;
 		j++;
 	}
-	str[i + j] = '\0';
-	return (str);
+	joint[i] = '\0';
+	return (joint);
 }
