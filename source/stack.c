@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/25 11:24:54 by zmunkhja          #+#    #+#             */
+/*   Updated: 2023/03/25 11:24:56 by zmunkhja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 /* get_stack_bottom:
@@ -41,7 +53,7 @@ t_stack	*stack_new(int value)
 	return (new);
 }
 
-/* add_stack_bottom:
+/* stack_add_bottom:
 *	Adds an element to the bottom of a stack.
 */
 void	stack_add_bottom(t_stack **stack, t_stack *new)

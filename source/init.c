@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/25 11:23:25 by zmunkhja          #+#    #+#             */
+/*   Updated: 2023/03/25 12:55:56 by zmunkhja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../push_swap.h"
 
@@ -37,7 +48,7 @@ t_stack	*fill_stack(int ac, char **av)
 *	The indexes are assigned from highest (stack_size) to lowest (1).
 */
 
-void assign_index(t_stack *stack_a, int stack_size)
+void	assign_index(t_stack *stack_a, int stack_size)
 {
 	t_stack	*ptr;
 	t_stack	*highest;

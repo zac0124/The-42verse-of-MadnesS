@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/25 11:25:07 by zmunkhja          #+#    #+#             */
+/*   Updated: 2023/03/25 11:25:09 by zmunkhja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 /* free_stack:
@@ -74,12 +86,12 @@ void	ft_putstr(char *str)
 	}
 }
 
-/* number_abs:
+/* num_abs:
 *	Returns the absolute value of a given number.
 *	The absolute value of a number is used to measure the distance of that
 *	number from 0, whether it is positive or negative (abs value of -6 is 6).
 */
-int	number_abs(int number)
+int	num_abs(int number)
 {
 	if (number < 0)
 		return (number * -1);

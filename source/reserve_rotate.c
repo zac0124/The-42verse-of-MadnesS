@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reserve_rotate.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/25 11:24:14 by zmunkhja          #+#    #+#             */
+/*   Updated: 2023/03/25 11:24:16 by zmunkhja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 /* rev_rotate:
@@ -38,7 +50,7 @@ void	rrb(t_stack **stack_b)
 }
 
 /* rrr:
-*	Brings the bottom element of both stack a and stack be
+*	Brings the bottom element of both stack a and stack b
 *	to the top of their respective stacks.
 *	Prints "rrr" to the standard output.
 */

@@ -5,6 +5,7 @@ Output.log
 tests
 checker_linux
 .history
+.DS_store
 
 # Prerequisites
 *.d

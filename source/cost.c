@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cost.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/25 11:23:06 by zmunkhja          #+#    #+#             */
+/*   Updated: 2023/03/25 12:23:12 by zmunkhja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 /* get_cost:
@@ -10,7 +22,7 @@
 *	if it is in the top half, the cost is positive. 
 */
 
-void get_cost(t_stack **stack_a, t_stack **stack_b)
+void	get_cost(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*temp_a;
 	t_stack	*temp_b;
@@ -48,9 +60,9 @@ void	cheapest_move(t_stack **stack_a, t_stack **stack_b)
 	cheapest = INT_MAX;
 	while (tmp)
 	{
-		if (number_abs(tmp->cost_a) + number_abs(tmp->cost_b) < number_abs(cheapest))
+		if (num_abs(tmp->cost_a) + num_abs(tmp->cost_b) < num_abs(cheapest))
 		{
-			cheapest = number_abs(tmp->cost_b) + number_abs(tmp->cost_a);
+			cheapest = num_abs(tmp->cost_b) + num_abs(tmp->cost_a);
 			cost_a = tmp->cost_a;
 			cost_b = tmp->cost_b;
 		}
