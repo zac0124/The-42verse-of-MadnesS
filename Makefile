@@ -17,8 +17,8 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror
 
 SOURCE = source/*.c
-OBJECT = obj/
 
+OBJECT = $(SOURCE/%.c=object/%.o)
 
 $(NAME):
 	$(CC) $(FLAGS) $(SOURCE) -o $(NAME)
@@ -26,7 +26,7 @@ $(NAME):
 all: $(NAME)
 
 clean:
-	@rm -rf sources/*.o
+	@rm -rf source/*.o
 
 fclean: clean
 	@rm -rf $(NAME)
@@ -34,17 +34,35 @@ fclean: clean
 re: fclean all
 
 
-test2:				$(NAME)	
-					$(eval ARG = $(shell shuf -i 0-100 -n 2))
-					./push_swap $(ARG) | ./checker_linux $(ARG)
-					@echo -n "TEST 2 Instructions: "
+test2:				$(NAME)
+					$(eval ARG = $(shell jot -r 2 0 200))
+					./push_swap $(ARG) | ./checker_Mac $(ARG)
+					@echo "Instruction count: "
 					@./push_swap $(ARG) | wc -l
 
-test1000:			$(NAME)	
-					$(eval ARG = $(shell shuf -i 0-5000 -n 1000))
-					./push_swap $(ARG) | ./checker_linux $(ARG)
-					@echo -n "TEST 1000 Instructions: "
+test3:				$(NAME)
+					$(eval ARG = $(shell jot -r 3 0 500))
+					./push_swap $(ARG) | ./checker_Mac $(ARG)
+					@echo "Instruction count: "
+					@./push_swap $(ARG) | wc -l
+
+test5:				$(NAME)
+					$(eval ARG = $(shell jot -r 5 0 5000))
+					./push_swap $(ARG) | ./checker_Mac $(ARG)
+					@echo "Instruction count: "
+					@./push_swap $(ARG) | wc -l
+
+test100:			$(NAME)
+					$(eval ARG = $(shell jot -r 100 0 50000))
+					./push_swap $(ARG) | ./checker_Mac $(ARG)
+					@echo "Instruction count: "
+					@./push_swap $(ARG) | wc -l
+
+test500:			$(NAME)
+					$(eval ARG = $(shell jot -r 500 0 1000000))
+					./push_swap $(ARG) | ./checker_Mac $(ARG)
+					@echo "Instruction count: "
 					@./push_swap $(ARG) | wc -l
 
 
-.PHONY: all clean fclean re test2 test1000
+.PHONY: all clean fclean re test2 test3 test5 test100 test500
