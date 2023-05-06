@@ -14,16 +14,16 @@
 
 static int	horizontalwall(t_complete *game)
 {
-	int	i;
-	int	j;
+	int	x;
+	int	y;
 
-	i = game->widthmap;
-	j = 0;
-	while (j < i)
+	x = game->widthmap;
+	y = 0;
+	while (y < x)
 	{
-		if (game->map[0][i] == '1' && game->map[game->heightmap - 1][j] == '1')
+		if (game->map[0][x] == '1' && game->map[game->heightmap - 1][y] == '1')
 			return (0);
-		j++;
+		y++;
 	}
 	return (1);
 }

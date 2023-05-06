@@ -20,7 +20,7 @@
 # include <errno.h>
 # include <string.h>
 # include "get_next_line.h"
-# include "../minilibx_mms_20200219/mlx.h"
+# include "../minilibx/mlx.h"
 
 typedef struct t_start
 {

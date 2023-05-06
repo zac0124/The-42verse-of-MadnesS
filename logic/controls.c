@@ -13,27 +13,27 @@
 
 #include "so_long.h"
 
-static int	right_move(t_complete *game, int i, int j)
+static int	right_move(t_complete *game, int x, int y)
 {
-	if (game->map[j][i] == 'E')
+	if (game->map[y][x] == 'E')
 	{
 		if (game->collectables != 0)
 			return (0);
 		printf("\nYou Have Won, Congrats!\n");
 		exit_point(game);
 	}
-	if (game->map[j][i] == '0')
+	if (game->map[y][x] == '0')
 	{
-		game->map[j][i] = 'P';
-		game->x_axis = i;
-		game->y_axis = j;
+		game->map[y][x] = 'P';
+		game->x_axis = x;
+		game->y_axis = y;
 		game->counter++;
 	}
-	if (game->map[j][i] == 'C')
+	if (game->map[y][x] == 'C')
 	{
-		game->map[j][i] = 'P';
-		game->x_axis = i;
-		game->y_axis = j;
+		game->map[y][x] = 'P';
+		game->x_axis = x;
+		game->y_axis = y;
 		game->collectables--;
 		game->counter++;
 	}
@@ -42,64 +42,64 @@ static int	right_move(t_complete *game, int i, int j)
 
 static int	keyboard_w_s(t_complete *game, int movement)
 {
-	int	i;
-	int	j;
-	int	k;
+	int	x;
+	int	y;
+	int	z;
 
-	i = game->x_axis;
-	j = game->y_axis;
-	if (movement == 13)
+	x = game->x_axis;
+	y = game->y_axis;
+	if (movement == 13) // carriage return
 	{
-		j--;
-		if (game->map[j][i] == '1')
+		y--;
+		if (game->map[y][x] == '1')
 			return (0);
-		k = right_move(game, i, j);
-		if (!k)
+		z = right_move(game, x, y);
+		if (!z)
 			return (0);
-		game->map[j + 1][i] = '0';
+		game->map[y + 1][x] = '0';
 	}
 	else if (movement == 1)
 	{
-		j++;
-		if (game->map[j][i] == '1')
+		y++;
+		if (game->map[y][x] == '1')
 			return (0);
-		k = right_move(game, i, j);
-		if (!k)
+		z = right_move(game, x, y);
+		if (!z)
 			return (0);
-		game->map[j - 1][i] = '0';
+		game->map[y - 1][x] = '0';
 	}
-	printf("Steps Taken: %i\n", game->counter);
-	printf("Collectables Left: %i\n", game->collectables);
+	printf("Steps Taken: %x\n", game->counter);
+	printf("Collectables Left: %x\n", game->collectables);
 	return (1);
 }
 
 static int	keyboard_a_d(t_complete *game, int movement)
 {
-	int	i;
-	int	j;
+	int	x;
+	int	y;
 	int	k;
 
-	i = game->x_axis;
-	j = game->y_axis;
+	x = game->x_axis;
+	y = game->y_axis;
 	if (movement == 0)
 	{
-		i--;
-		if (game->map[j][i] == '1')
+		x--;
+		if (game->map[y][x] == '1')
 			return (0);
-		k = right_move(game, i, j);
+		k = right_move(game, x, y);
 		if (!k)
 			return (0);
-		game->map[j][i + 1] = '0';
+		game->map[y][x + 1] = '0';
 	}
 	else if (movement == 2)
 	{
-		i++;
-		if (game->map[j][i] == '1')
+		x++;
+		if (game->map[y][x] == '1')
 			return (0);
-		k = right_move(game, i, j);
+		k = right_move(game, x, y);
 		if (!k)
 			return (0);
-		game->map[j][i - 1] = '0';
+		game->map[y][x - 1] = '0';
 	}
 	printf("Steps Taken: %i\n", game->counter);
 	printf("Collectables Remaining: %i\n", game->collectables);
