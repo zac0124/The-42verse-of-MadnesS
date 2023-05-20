@@ -25,11 +25,11 @@
 typedef struct t_start
 {
 	int		fd;
-	int		heightmap;
-	int		widthmap;
-	int		playercount;
-	int		columncount;
-	int		exitcount;
+	int		map_height;
+	int		map_width;
+	int		player_count;
+	int		column_count;
+	int		exit_count;
 	int		x_axis;
 	int		y_axis;
 	int		counter;
@@ -38,7 +38,7 @@ typedef struct t_start
 	char	**map;
 
 	void	*floor;
-	void	*barrier;
+	void	*wall;
 	void	*player;
 	void	*exit;
 	void	*collectable;

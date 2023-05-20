@@ -12,14 +12,14 @@
 
 #include "so_long.h"
 
-static void	*ft_memset(void *b, int c, size_t length)
+static void	*ft_memset(void *game, int counter, size_t length)
 {
 	unsigned char	*p;
 
-	p = (unsigned char *)b;
+	p = (unsigned char *)game;
 	while (length--)
-		*p++ = (unsigned char)c;
-	return (b);
+		*p++ = (unsigned char)counter;
+	return (game);
 }
 
 int	exit_point(t_complete *game)
@@ -30,7 +30,7 @@ int	exit_point(t_complete *game)
 	if (game->winpointer)
 		mlx_destroy_window(game->mlxpointer, game->winpointer);
 	free(game->mlxpointer);
-	while (line < game->heightmap - 1)
+	while (line < game->map_height - 1)
 		free(game->map[line++]);
 	free(game->map);
 	exit(0);
@@ -46,8 +46,8 @@ int	main(int argc, char **argv)
 	map_reading(&game, argv);
 	check_errors(&game);
 	game.mlxpointer = mlx_init();
-	game.winpointer = mlx_new_window(game.mlxpointer, (game.widthmap * 40),
-			(game.heightmap * 40), "solong");
+	game.winpointer = mlx_new_window(game.mlxpointer, (game.map_width * 40),
+			(game.map_height * 40), "so_long");
 	place_images_in_game(&game);
 	adding_in_graphics(&game);
 	mlx_key_hook(game.winpointer, controls_working, &game);

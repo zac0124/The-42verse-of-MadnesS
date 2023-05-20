@@ -13,13 +13,13 @@
 
 #include "so_long.h"
 
-static int	right_move(t_complete *game, int x, int y)
+static int	move_2_right(t_complete *game, int x, int y)
 {
 	if (game->map[y][x] == 'E')
 	{
 		if (game->collectables != 0)
 			return (0);
-		printf("\nYou Have Won, Congrats!\n");
+		printf("\nWinner !!!\n");
 		exit_point(game);
 	}
 	if (game->map[y][x] == '0')
@@ -53,7 +53,7 @@ static int	keyboard_w_s(t_complete *game, int movement)
 		y--;
 		if (game->map[y][x] == '1')
 			return (0);
-		z = right_move(game, x, y);
+		z = move_2_right(game, x, y);
 		if (!z)
 			return (0);
 		game->map[y + 1][x] = '0';
@@ -63,13 +63,13 @@ static int	keyboard_w_s(t_complete *game, int movement)
 		y++;
 		if (game->map[y][x] == '1')
 			return (0);
-		z = right_move(game, x, y);
+		z = move_2_right(game, x, y);
 		if (!z)
 			return (0);
 		game->map[y - 1][x] = '0';
 	}
-	printf("Steps Taken: %x\n", game->counter);
-	printf("Collectables Left: %x\n", game->collectables);
+	printf("The number of steps: %x\n", game->counter);
+	printf("The number of pizza should be eaten: %x\n", game->collectables);
 	return (1);
 }
 
@@ -77,7 +77,7 @@ static int	keyboard_a_d(t_complete *game, int movement)
 {
 	int	x;
 	int	y;
-	int	k;
+	int	z;
 
 	x = game->x_axis;
 	y = game->y_axis;
@@ -86,8 +86,8 @@ static int	keyboard_a_d(t_complete *game, int movement)
 		x--;
 		if (game->map[y][x] == '1')
 			return (0);
-		k = right_move(game, x, y);
-		if (!k)
+		z = move_2_right(game, x, y);
+		if (!z)
 			return (0);
 		game->map[y][x + 1] = '0';
 	}
@@ -96,13 +96,13 @@ static int	keyboard_a_d(t_complete *game, int movement)
 		x++;
 		if (game->map[y][x] == '1')
 			return (0);
-		k = right_move(game, x, y);
-		if (!k)
+		z = move_2_right(game, x, y);
+		if (!z)
 			return (0);
 		game->map[y][x - 1] = '0';
 	}
-	printf("Steps Taken: %i\n", game->counter);
-	printf("Collectables Remaining: %i\n", game->collectables);
+	printf("The number of steps: %i\n", game->counter);
+	printf("Collectables: %i\n", game->collectables);
 	return (1);
 }
 
