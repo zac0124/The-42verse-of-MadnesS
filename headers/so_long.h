@@ -22,7 +22,7 @@
 # include "get_next_line.h"
 # include "../minilibx/mlx.h"
 
-typedef struct t_start
+typedef struct game_start
 {
 	int		fd;
 	int		map_height;
@@ -45,13 +45,15 @@ typedef struct t_start
 	void	*mlxpointer;
 	void	*winpointer;
 
-}	t_complete;
+}	game_construct;
 
-int		exit_point(t_complete *game);
-int		map_reading(t_complete *game, char **argv);
-int		controls_working(int command, t_complete *game);
-void	adding_in_graphics(t_complete *game);
-void	place_images_in_game(t_complete *game);
-void	check_errors(t_complete *game);
+int		exit_point(game_construct *game);
+int		map_reading(game_construct *game, char **argv);
+int		controls_working(int command, game_construct *game);
+void	adding_in_graphics(game_construct *game);
+void	place_images_in_game(game_construct *game);
+void	check_errors(game_construct *game);
+void 	place_score(game_construct *game);
+
 
 #endif

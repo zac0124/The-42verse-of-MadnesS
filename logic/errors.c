@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static int	horizontal_wall(t_complete *game)
+static int	horizontal_wall(game_construct *game)
 {
 	int	x;
 	int	y;
@@ -28,7 +28,7 @@ static int	horizontal_wall(t_complete *game)
 	return (1);
 }
 
-static int	vertical_wall(t_complete *game)
+static int	vertical_wall(game_construct *game)
 {
 	int	y;
 	int	x;
@@ -44,7 +44,7 @@ static int	vertical_wall(t_complete *game)
 	return (1);
 }
 
-static void	wall_validation(t_complete *game)
+static void	wall_validation(game_construct *game)
 {
 	int	vertical_walls;
 	int	horizontal_walls;
@@ -58,7 +58,7 @@ static void	wall_validation(t_complete *game)
 	}
 }
 
-static void	count_checker(t_complete *game, int height, int width)
+static void	count_checker(game_construct *game, int height, int width)
 {
 	if (game->map[height][width] != '1' &&
 		game->map[height][width] != '0' &&
@@ -78,7 +78,7 @@ static void	count_checker(t_complete *game, int height, int width)
 			game->exit_count++;
 }
 
-void	game_validation(t_complete *game)
+void	game_validation(game_construct *game)
 {
 	int	y;
 	int	x;
@@ -103,7 +103,7 @@ void	game_validation(t_complete *game)
 	}
 }
 
-void	check_errors(t_complete *game)
+void	check_errors(game_construct *game)
 {
 	wall_validation(game);
 	game_validation(game);

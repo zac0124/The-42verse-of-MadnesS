@@ -12,9 +12,9 @@
 
 #include "so_long.h"
 
-static void	*ft_memset(void *game, int counter, size_t length)
+static void *ft_memset(void *game, int counter, size_t length)
 {
-	unsigned char	*p;
+	unsigned char *p;
 
 	p = (unsigned char *)game;
 	while (length--)
@@ -22,9 +22,9 @@ static void	*ft_memset(void *game, int counter, size_t length)
 	return (game);
 }
 
-int	exit_point(t_complete *game)
+int exit_point(game_construct *game)
 {
-	int	line;
+	int line;
 
 	line = 0;
 	if (game->winpointer)
@@ -36,21 +36,34 @@ int	exit_point(t_complete *game)
 	exit(0);
 }
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	t_complete	game;
+	game_construct game;
+	// char *step = ft_itoa(game.counter);
+	// char *pizzaLeft = ft_itoa(game.collectables);
 
 	if (argc != 2)
-		return (0);
-	ft_memset(&game, 0, sizeof(t_complete));
+	{
+		perror("\033[1;31m🛑ERROR \033[0m FORGOT TO INCLUDE YOUR MAP ???");
+		exit(1);
+	}
+	ft_memset(&game, 0, sizeof(game_construct));
 	map_reading(&game, argv);
-	check_errors(&game);
-	game.mlxpointer = mlx_init();
-	game.winpointer = mlx_new_window(game.mlxpointer, (game.map_width * 40),
-			(game.map_height * 40), "so_long");
-	place_images_in_game(&game);
-	adding_in_graphics(&game);
-	mlx_key_hook(game.winpointer, controls_working, &game);
-	mlx_hook(game.winpointer, 17, 0, (void *)exit, 0);
-	mlx_loop(game.mlxpointer);
+	if (game.map != NULL)
+	{
+		check_errors(&game);
+		game.mlxpointer = mlx_init();
+		game.winpointer = mlx_new_window(game.mlxpointer, (game.map_width * 40),
+										 (game.map_height * 40), "so_long");
+		place_images_in_game(&game);
+		adding_in_graphics(&game);
+		// mlx_string_put(game.mlxpointer, game.winpointer, 5, 10, 0xffffff, step);
+		// mlx_string_put(game.mlxpointer, game.winpointer, 5, 20, 0xffffff, pizzaLeft);
+
+		mlx_key_hook(game.winpointer, controls_working, &game);
+		mlx_hook(game.winpointer, 10, 0, (void *)exit, 0);
+
+		mlx_loop(game.mlxpointer);
+	}
+	return (0);
 }

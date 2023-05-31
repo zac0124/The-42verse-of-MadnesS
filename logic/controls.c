@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "so_long.h"
 
-static int	move_2_right(t_complete *game, int x, int y)
+static int move_2_right(game_construct *game, int x, int y)
 {
 	if (game->map[y][x] == 'E')
 	{
@@ -40,11 +39,11 @@ static int	move_2_right(t_complete *game, int x, int y)
 	return (1);
 }
 
-static int	keyboard_w_s(t_complete *game, int movement)
+static int keyboard_w_s(game_construct *game, int movement)
 {
-	int	x;
-	int	y;
-	int	z;
+	int x;
+	int y;
+	int z;
 
 	x = game->x_axis;
 	y = game->y_axis;
@@ -68,16 +67,18 @@ static int	keyboard_w_s(t_complete *game, int movement)
 			return (0);
 		game->map[y - 1][x] = '0';
 	}
-	printf("The number of steps: %x\n", game->counter);
-	printf("The number of pizza should be eaten: %x\n", game->collectables);
+	printf("The number of steps: %i\n", game->counter);
+	printf("The number of pizza should be eaten: %i\n", game->collectables);
+		place_score(&game);
+
 	return (1);
 }
 
-static int	keyboard_a_d(t_complete *game, int movement)
+static int keyboard_a_d(game_construct *game, int movement)
 {
-	int	x;
-	int	y;
-	int	z;
+	int x;
+	int y;
+	int z;
 
 	x = game->x_axis;
 	y = game->y_axis;
@@ -102,13 +103,14 @@ static int	keyboard_a_d(t_complete *game, int movement)
 		game->map[y][x - 1] = '0';
 	}
 	printf("The number of steps: %i\n", game->counter);
-	printf("Collectables: %i\n", game->collectables);
+	printf("The number of pizza should be eaten: %i\n", game->collectables);
+	place_score(&game);
 	return (1);
 }
 
-int	controls_working(int command, t_complete *game)
+int controls_working(int command, game_construct *game)
 {
-	int	works;
+	int works;
 
 	if (command == 53)
 		exit_point(game);
