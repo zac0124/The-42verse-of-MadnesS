@@ -19,7 +19,7 @@ static int move_2_right(game_construct *game, int x, int y)
 		if (game->collectables != 0)
 			return (0);
 		printf("\nWinner !!!\n");
-		exit_point(game);
+		exit_game(game);
 	}
 	if (game->map[y][x] == '0')
 	{
@@ -39,7 +39,7 @@ static int move_2_right(game_construct *game, int x, int y)
 	return (1);
 }
 
-static int keyboard_w_s(game_construct *game, int movement)
+static int go_down_up(game_construct *game, int movement)
 {
 	int x;
 	int y;
@@ -69,12 +69,11 @@ static int keyboard_w_s(game_construct *game, int movement)
 	}
 	printf("The number of steps: %i\n", game->counter);
 	printf("The number of pizza should be eaten: %i\n", game->collectables);
-		place_score(&game);
 
 	return (1);
 }
 
-static int keyboard_a_d(game_construct *game, int movement)
+static int go_left_right(game_construct *game, int movement)
 {
 	int x;
 	int y;
@@ -104,25 +103,39 @@ static int keyboard_a_d(game_construct *game, int movement)
 	}
 	printf("The number of steps: %i\n", game->counter);
 	printf("The number of pizza should be eaten: %i\n", game->collectables);
-	place_score(&game);
 	return (1);
 }
 
-int controls_working(int command, game_construct *game)
+int handleKeyboardEvent(int command, game_construct *game)
 {
-	int works;
+	int mode;
 
 	if (command == 53)
-		exit_point(game);
+		exit_game(game);
 	if (command == 13)
-		works = keyboard_w_s(game, command);
+		mode = go_down_up(game, command);
 	if (command == 1)
-		works = keyboard_w_s(game, command);
+		mode = go_down_up(game, command);
 	if (command == 0)
-		works = keyboard_a_d(game, command);
+		mode = go_left_right(game, command);
 	if (command == 2)
-		works = keyboard_a_d(game, command);
-	if (works)
-		adding_in_graphics(game);
+		mode = go_left_right(game, command);
+	if (mode)
+	{
+		render_ui(game);
+		mlx_string_put(game->mlxpointer, game->winpointer, 10, 10, 0xFFFFFF, "Collect:");
+		mlx_string_put(game->mlxpointer, game->winpointer, 10, 30, 0xFFFFFF, "Steps:");
+
+		char scoreStr[10];
+		char stepStr[10];
+
+		sprintf(scoreStr, "%i", game->collectables);
+		sprintf(stepStr, "%i", game->counter);
+
+		mlx_string_put(game->mlxpointer, game->winpointer, 70, 10, 0xFFFFFF, scoreStr);
+		mlx_string_put(game->mlxpointer, game->winpointer, 70, 30, 0xFFFFFF, stepStr);
+	}
+	// mlx_clear_window(game->mlxpointer, game->winpointer);
+
 	return (1);
 }

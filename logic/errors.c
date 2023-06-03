@@ -54,7 +54,7 @@ static void	wall_validation(game_construct *game)
 	if (!vertical_walls || !horizontal_walls)
 	{
 		printf("\nCould not find any wall in this map\n");
-		exit_point(game);
+		exit_game(game);
 	}
 }
 
@@ -68,7 +68,7 @@ static void	count_checker(game_construct *game, int height, int width)
 		game->map[height][width] != '\n')
 	{
 		printf("\nThere is an error!%c\n", game->map[height][width]);
-		exit_point(game);
+		exit_game(game);
 	}
 	if (game->map[height][width] == 'C')
 			game->column_count++;
@@ -99,7 +99,7 @@ void	game_validation(game_construct *game)
 	{
 		printf("\nError\nSomething is wrong!\n");
 		printf("either player, exit or collectable issue\n");
-		exit_point(game);
+		exit_game(game);
 	}
 }
 

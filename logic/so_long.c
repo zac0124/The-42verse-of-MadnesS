@@ -22,7 +22,7 @@ static void *ft_memset(void *game, int counter, size_t length)
 	return (game);
 }
 
-int exit_point(game_construct *game)
+int exit_game(game_construct *game)
 {
 	int line;
 
@@ -48,19 +48,19 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 	ft_memset(&game, 0, sizeof(game_construct));
-	map_reading(&game, argv);
+	read_map(&game, argv);
 	if (game.map != NULL)
 	{
 		check_errors(&game);
 		game.mlxpointer = mlx_init();
 		game.winpointer = mlx_new_window(game.mlxpointer, (game.map_width * 40),
 										 (game.map_height * 40), "so_long");
-		place_images_in_game(&game);
-		adding_in_graphics(&game);
+		insert_images(&game);
+		render_ui(&game);
 		// mlx_string_put(game.mlxpointer, game.winpointer, 5, 10, 0xffffff, step);
 		// mlx_string_put(game.mlxpointer, game.winpointer, 5, 20, 0xffffff, pizzaLeft);
 
-		mlx_key_hook(game.winpointer, controls_working, &game);
+		mlx_key_hook(game.winpointer, handleKeyboardEvent, &game);
 		mlx_hook(game.winpointer, 10, 0, (void *)exit, 0);
 
 		mlx_loop(game.mlxpointer);

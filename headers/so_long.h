@@ -47,13 +47,12 @@ typedef struct game_start
 
 }	game_construct;
 
-int		exit_point(game_construct *game);
-int		map_reading(game_construct *game, char **argv);
-int		controls_working(int command, game_construct *game);
-void	adding_in_graphics(game_construct *game);
-void	place_images_in_game(game_construct *game);
+int		exit_game(game_construct *game);
+int		read_map(game_construct *game, char **argv);
+int 	handleKeyboardEvent(int command, game_construct *game);
+void	render_ui(game_construct *game);
+void	insert_images(game_construct *game);
 void	check_errors(game_construct *game);
-void 	place_score(game_construct *game);
 
 
 #endif

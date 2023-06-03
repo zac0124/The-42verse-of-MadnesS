@@ -48,7 +48,7 @@ static int	add_line(game_construct *game, char *line)
 	return (1);
 }
 
-int	map_reading(game_construct *game, char **argv)
+int	read_map(game_construct *game, char **argv)
 {
 	char	*readmap;
 
