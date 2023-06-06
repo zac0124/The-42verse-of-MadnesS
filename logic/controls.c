@@ -110,7 +110,7 @@ int handleKeyboardEvent(int command, game_construct *game)
 {
 	int mode;
 
-	if (command == 53)
+	if (command == 53 || command == 17)
 		exit_game(game);
 	if (command == 13)
 		mode = go_down_up(game, command);
@@ -135,7 +135,5 @@ int handleKeyboardEvent(int command, game_construct *game)
 		mlx_string_put(game->mlxpointer, game->winpointer, 70, 10, 0xFFFFFF, scoreStr);
 		mlx_string_put(game->mlxpointer, game->winpointer, 70, 30, 0xFFFFFF, stepStr);
 	}
-	// mlx_clear_window(game->mlxpointer, game->winpointer);
-
 	return (1);
 }

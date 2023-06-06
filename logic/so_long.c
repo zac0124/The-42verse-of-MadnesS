@@ -39,9 +39,6 @@ int exit_game(game_construct *game)
 int main(int argc, char **argv)
 {
 	game_construct game;
-	// char *step = ft_itoa(game.counter);
-	// char *pizzaLeft = ft_itoa(game.collectables);
-
 	if (argc != 2)
 	{
 		perror("\033[1;31m🛑ERROR \033[0m FORGOT TO INCLUDE YOUR MAP ???");
@@ -57,11 +54,9 @@ int main(int argc, char **argv)
 										 (game.map_height * 40), "so_long");
 		insert_images(&game);
 		render_ui(&game);
-		// mlx_string_put(game.mlxpointer, game.winpointer, 5, 10, 0xffffff, step);
-		// mlx_string_put(game.mlxpointer, game.winpointer, 5, 20, 0xffffff, pizzaLeft);
-
 		mlx_key_hook(game.winpointer, handleKeyboardEvent, &game);
 		mlx_hook(game.winpointer, 10, 0, (void *)exit, 0);
+		mlx_hook(game.winpointer, 17, 1L<<17, (void *)exit, 0);
 
 		mlx_loop(game.mlxpointer);
 	}

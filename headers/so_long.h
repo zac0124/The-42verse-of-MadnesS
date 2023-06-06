@@ -50,6 +50,7 @@ typedef struct game_start
 int		exit_game(game_construct *game);
 int		read_map(game_construct *game, char **argv);
 int 	handleKeyboardEvent(int command, game_construct *game);
+// int 	close_window(void *param);
 void	render_ui(game_construct *game);
 void	insert_images(game_construct *game);
 void	check_errors(game_construct *game);
