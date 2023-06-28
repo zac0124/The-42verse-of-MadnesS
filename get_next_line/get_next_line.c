@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"	
+#include "get_next_line.h"
 
 static char	*find_line(int fd, char *buf, char *backup)
 {

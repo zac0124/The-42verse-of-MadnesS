@@ -12,42 +12,42 @@
 
 #include "so_long.h"
 
-void render_player(game_construct *game, int height, int width)
+void	render_player(t_game_construct *game, int height, int width)
 {
 	mlx_put_image_to_window(game->mlxpointer,
-							game->winpointer, game->player, width * 40, height * 40);
+		game->winpointer, game->player, width * 40, height * 40);
 	game->y_axis = height;
 	game->x_axis = width;
 }
 
-void render_collectable(game_construct *game, int height, int width)
+void	render_collectable(t_game_construct *game, int height, int width)
 {
 	mlx_put_image_to_window(game->mlxpointer,
-							game->winpointer, game->collectable, width * 40, height * 40);
+		game->winpointer, game->collectable, width * 40, height * 40);
 	game->collectables++;
 }
 
-void insert_images(game_construct *game)
+void	insert_images(t_game_construct *game)
 {
-	int width;
-	int height;
+	int		width;
+	int		height;
 
 	game->floor = mlx_xpm_file_to_image(game->mlxpointer,
-										"images/road.xpm", &width, &height);
+			"images/road.xpm", &width, &height);
 	game->wall = mlx_xpm_file_to_image(game->mlxpointer,
-									   "images/wall.xpm", &width, &height);
+			"images/wall.xpm", &width, &height);
 	game->player = mlx_xpm_file_to_image(game->mlxpointer,
-										 "images/ninja.xpm", &width, &height);
+			"images/ninja.xpm", &width, &height);
 	game->exit = mlx_xpm_file_to_image(game->mlxpointer,
-									   "images/home.xpm", &width, &height);
+			"images/home.xpm", &width, &height);
 	game->collectable = mlx_xpm_file_to_image(game->mlxpointer,
-											  "images/pizza.xpm", &width, &height);
+			"images/pizza.xpm", &width, &height);
 }
 
-void render_ui(game_construct *game)
+void	render_ui(t_game_construct *game)
 {
-	int height;
-	int width;
+	int		height;
+	int		width;
 
 	height = 0;
 	game->collectables = 0;
@@ -58,21 +58,19 @@ void render_ui(game_construct *game)
 		{
 			if (game->map[height][width] == '1')
 				mlx_put_image_to_window(game->mlxpointer,
-										game->winpointer, game->wall, width * 40, height * 40);
+					game->winpointer, game->wall, width * 40, height * 40);
 			if (game->map[height][width] == 'C')
 				render_collectable(game, height, width);
 			if (game->map[height][width] == 'P')
 				render_player(game, height, width);
 			if (game->map[height][width] == 'E')
 				mlx_put_image_to_window(game->mlxpointer,
-										game->winpointer, game->exit, width * 40, height * 40);
+					game->winpointer, game->exit, width * 40, height * 40);
 			if (game->map[height][width] == '0')
 				mlx_put_image_to_window(game->mlxpointer,
-										game->winpointer, game->floor, width * 40, height * 40);
-
+					game->winpointer, game->floor, width * 40, height * 40);
 			width++;
 		}
 		height++;
-
 	}
 }

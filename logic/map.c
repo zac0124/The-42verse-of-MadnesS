@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "so_long.h"
 
 static int	width_of_map(char *string)
@@ -25,7 +24,7 @@ static int	width_of_map(char *string)
 	return (width);
 }
 
-static int	add_line(game_construct *game, char *line)
+static int	add_line(t_game_construct *game, char *line)
 {
 	char	**temporary;
 	int		i;
@@ -48,7 +47,7 @@ static int	add_line(game_construct *game, char *line)
 	return (1);
 }
 
-int	read_map(game_construct *game, char **argv)
+int	read_map(t_game_construct *game, char **argv)
 {
 	char	*readmap;
 
@@ -56,7 +55,7 @@ int	read_map(game_construct *game, char **argv)
 	if (game->fd < 0)
 		return (0);
 	while (1)
-	{		
+	{
 		readmap = get_next_line(game->fd);
 		if (!add_line(game, readmap))
 			break ;

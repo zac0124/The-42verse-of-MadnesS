@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -45,15 +44,17 @@ typedef struct game_start
 	void	*mlxpointer;
 	void	*winpointer;
 
-}	game_construct;
+}	t_game_construct;
 
-int		exit_game(game_construct *game);
-int		read_map(game_construct *game, char **argv);
-int 	handleKeyboardEvent(int command, game_construct *game);
-// int 	close_window(void *param);
-void	render_ui(game_construct *game);
-void	insert_images(game_construct *game);
-void	check_errors(game_construct *game);
+int		exit_game(t_game_construct *game);
+int		read_map(t_game_construct *game, char **argv);
+int		handle_keyboard_event(int command, t_game_construct *game);
+void	render_ui(t_game_construct *game);
+void	insert_images(t_game_construct *game);
+void	check_errors(t_game_construct *game);
+void	game_validation(t_game_construct *game);
+void	wall_validation(t_game_construct *game);
+void	count_checker(t_game_construct *game, int height, int width);
 
 
 #endif
