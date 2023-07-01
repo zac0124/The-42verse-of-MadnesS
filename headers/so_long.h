@@ -56,5 +56,4 @@ void	game_validation(t_game_construct *game);
 void	wall_validation(t_game_construct *game);
 void	count_checker(t_game_construct *game, int height, int width);
 
-
 #endif

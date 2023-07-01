@@ -44,6 +44,23 @@ void	insert_images(t_game_construct *game)
 			"images/pizza.xpm", &width, &height);
 }
 
+void	construct(t_game_construct *game, int height, int width)
+{
+	if (game->map[height][width] == '1')
+		mlx_put_image_to_window(game->mlxpointer,
+			game->winpointer, game->wall, width * 40, height * 40);
+	if (game->map[height][width] == 'C')
+		render_collectable(game, height, width);
+	if (game->map[height][width] == 'P')
+		render_player(game, height, width);
+	if (game->map[height][width] == 'E')
+		mlx_put_image_to_window(game->mlxpointer,
+			game->winpointer, game->exit, width * 40, height * 40);
+	if (game->map[height][width] == '0')
+		mlx_put_image_to_window(game->mlxpointer,
+			game->winpointer, game->floor, width * 40, height * 40);
+}
+
 void	render_ui(t_game_construct *game)
 {
 	int		height;
@@ -56,19 +73,7 @@ void	render_ui(t_game_construct *game)
 		width = 0;
 		while (game->map[height][width])
 		{
-			if (game->map[height][width] == '1')
-				mlx_put_image_to_window(game->mlxpointer,
-					game->winpointer, game->wall, width * 40, height * 40);
-			if (game->map[height][width] == 'C')
-				render_collectable(game, height, width);
-			if (game->map[height][width] == 'P')
-				render_player(game, height, width);
-			if (game->map[height][width] == 'E')
-				mlx_put_image_to_window(game->mlxpointer,
-					game->winpointer, game->exit, width * 40, height * 40);
-			if (game->map[height][width] == '0')
-				mlx_put_image_to_window(game->mlxpointer,
-					game->winpointer, game->floor, width * 40, height * 40);
+			construct(game, height, width);
 			width++;
 		}
 		height++;
