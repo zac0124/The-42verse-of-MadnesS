@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   wall_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: zmunkhjargal <zmunkhjargal@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 18:50:56 by zmunkhja          #+#    #+#             */
-/*   Updated: 2023/06/28 18:51:05 by zmunkhja         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:36:02 by zmunkhjarga      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../headers/so_long.h"
 
 static int	horizontal_wall(t_game_construct *game)
 {

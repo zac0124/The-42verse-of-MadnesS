@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: zmunkhjargal <zmunkhjargal@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:32:56 by zmunkhja          #+#    #+#             */
-/*   Updated: 2023/04/21 16:32:59 by zmunkhja         ###   ########.fr       */
+/*   Updated: 2023/07/10 19:10:38 by zmunkhjarga      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <string.h>
+# include <stdlib.h>
 # include "get_next_line.h"
 # include "../minilibx/mlx.h"
 
-typedef struct game_start
+typedef struct s_game_start
 {
 	int		fd;
 	int		map_height;

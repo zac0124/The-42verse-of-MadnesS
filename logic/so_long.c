@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: zmunkhjargal <zmunkhjargal@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:34:10 by zmunkhja          #+#    #+#             */
-/*   Updated: 2023/04/21 16:34:12 by zmunkhja         ###   ########.fr       */
+/*   Updated: 2023/07/04 16:28:43 by zmunkhjarga      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../headers/so_long.h"
 
 static void	*ft_memset(void *game, int counter, size_t length)
 {
@@ -47,7 +47,7 @@ int	main(int argc, char **argv)
 	}
 	ft_memset(&game, 0, sizeof(t_game_construct));
 	read_map(&game, argv);
-	if (game.map != NULL)
+	if (game.map != 0)
 	{
 		check_errors(&game);
 		game.mlxpointer = mlx_init();
@@ -56,8 +56,8 @@ int	main(int argc, char **argv)
 		insert_images(&game);
 		render_ui(&game);
 		mlx_key_hook(game.winpointer, handle_keyboard_event, &game);
-		mlx_hook(game.winpointer, 10, 0, (void *)exit, 0);
-		mlx_hook(game.winpointer, 17, 1L << 17, (void *)exit, 0);
+		mlx_hook(game.winpointer, 10, 0, exit_game, 0);
+		mlx_hook(game.winpointer, 17, 1L << 17, exit_game, 0);
 		mlx_loop(game.mlxpointer);
 	}
 	return (0);
