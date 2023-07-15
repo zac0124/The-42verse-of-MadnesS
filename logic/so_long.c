@@ -22,6 +22,10 @@ static void	*ft_memset(void *game, int counter, size_t length)
 	return (game);
 }
 
+int	close_game(void){
+	exit(0);
+}
+
 int	exit_game(t_game_construct *game)
 {
 	int		line;
@@ -57,7 +61,7 @@ int	main(int argc, char **argv)
 		render_ui(&game);
 		mlx_key_hook(game.winpointer, handle_keyboard_event, &game);
 		mlx_hook(game.winpointer, 10, 0, exit_game, 0);
-		mlx_hook(game.winpointer, 17, 1L << 17, exit_game, 0);
+		mlx_hook(game.winpointer, 17, 1L << 17, close_game, 0);
 		mlx_loop(game.mlxpointer);
 	}
 	return (0);

@@ -48,6 +48,7 @@ typedef struct s_game_start
 }	t_game_construct;
 
 int		exit_game(t_game_construct *game);
+int		close_game(void);
 int		read_map(t_game_construct *game, char **argv);
 int		handle_keyboard_event(int command, t_game_construct *game);
 void	render_ui(t_game_construct *game);
