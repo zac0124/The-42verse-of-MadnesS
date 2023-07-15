@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../headers/so_long.h"
 
 static int	width_of_map(char *string)
 {
@@ -34,7 +34,7 @@ static int	add_line(t_game_construct *game, char *line)
 	i = 0;
 	game->map_height++;
 	temporary = (char **)malloc(sizeof(char *) * (game->map_height + 1));
-	temporary[game->map_height] = NULL;
+	temporary[game->map_height] = 0;
 	while (i < game->map_height - 1)
 	{
 		temporary[i] = game->map[i];
