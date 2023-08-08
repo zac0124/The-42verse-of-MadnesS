@@ -6,7 +6,7 @@
 /*   By: zmunkhjargal <zmunkhjargal@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 18:50:56 by zmunkhja          #+#    #+#             */
-/*   Updated: 2023/07/10 18:36:02 by zmunkhjarga      ###   ########.fr       */
+/*   Updated: 2023/08/08 16:31:00 by zmunkhjarga      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,17 @@ static int	vertical_wall(t_game_construct *game)
 
 void	wall_validation(t_game_construct *game)
 {
-	int	vertical_walls;
-	int	horizontal_walls;
+	int		vertical_walls;
+	int		horizontal_walls;
 
 	vertical_walls = vertical_wall(game);
 	horizontal_walls = horizontal_wall(game);
+
 	if (!vertical_walls || !horizontal_walls)
 	{
-		printf("\nError!\nCould not find any wall in this map\n");
+		printf("\nError!\nCould not find valid wall in this map\n");
 		exit_game(game);
 	}
+
+	
 }

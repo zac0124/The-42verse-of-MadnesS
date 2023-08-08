@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: zmunkhjargal <zmunkhjargal@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:34:02 by zmunkhja          #+#    #+#             */
-/*   Updated: 2023/04/21 16:34:04 by zmunkhja         ###   ########.fr       */
+/*   Updated: 2023/08/08 14:19:05 by zmunkhjarga      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,25 @@ static int	width_of_map(char *string)
 	return (width);
 }
 
-static int	add_line(t_game_construct *game, char *line)
+static int	copy_map_line(t_game_construct *game, char *line)
 {
-	char	**temporary;
 	int		i;
 
 	if (!line)
 		return (0);
 	i = 0;
 	game->map_height++;
-	temporary = (char **)malloc(sizeof(char *) * (game->map_height + 1));
-	temporary[game->map_height] = 0;
+	game->copy_map = (char **)malloc(sizeof(char *) * (game->map_height + 1));
+	game->copy_map[game->map_height] = 0;
 	while (i < game->map_height - 1)
 	{
-		temporary[i] = game->map[i];
+		game->copy_map[i] = game->map[i];
 		i++;
 	}
-	temporary[i] = line;
+	game->copy_map[i] = line;
 	if (game->map)
 		free(game->map);
-	game->map = temporary;
+	game->map = game->copy_map;
 	return (1);
 }
 
@@ -57,7 +56,7 @@ int	read_map(t_game_construct *game, char **argv)
 	while (1)
 	{
 		readmap = get_next_line(game->fd);
-		if (!add_line(game, readmap))
+		if (!copy_map_line(game, readmap))
 			break ;
 	}
 	close (game->fd);

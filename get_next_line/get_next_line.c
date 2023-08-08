@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: zmunkhjargal <zmunkhjargal@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 12:06:49 by zmunkhja          #+#    #+#             */
-/*   Updated: 2022/07/01 11:38:49 by zmunkhja         ###   ########.fr       */
+/*   Updated: 2023/07/29 14:25:53 by zmunkhjarga      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../headers/get_next_line.h"
 
 static char	*find_line(int fd, char *buf, char *backup)
 {
@@ -31,7 +31,7 @@ static char	*find_line(int fd, char *buf, char *backup)
 		temp = backup;
 		backup = ft_strjoin(temp, buf);
 		free(temp);
-		temp = NULL;
+		temp = 0;
 		if (ft_strchr (buf, '\n'))
 			break ;
 	}
@@ -52,7 +52,7 @@ static char	*extract(char *line)
 	if (*backup == '\0')
 	{
 		free(backup);
-		backup = NULL;
+		backup = 0;
 	}
 	line[i + 1] = '\0';
 	return (backup);
@@ -71,9 +71,9 @@ char	*get_next_line(int fd)
 		return (0);
 	line = find_line(fd, buf, backup);
 	free(buf);
-	buf = NULL;
+	buf = 0;
 	if (!line)
-		return (NULL);
+		return (0);
 	backup = extract(line);
 	return (line);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: zmunkhjargal <zmunkhjargal@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:33:38 by zmunkhja          #+#    #+#             */
-/*   Updated: 2023/04/21 16:33:41 by zmunkhja         ###   ########.fr       */
+/*   Updated: 2023/07/28 18:20:21 by zmunkhjarga      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 static int	move_2_right(t_game_construct *game, int x, int y)
 {
-	if (game->map[y][x] == 'E')
+	if (game->map[y][x] == MAP_EXIT)
 	{
 		if (game->collectables != 0)
 			return (0);
 		printf("\nWinner !!!\n");
 		exit_game(game);
 	}
-	if (game->map[y][x] == '0')
+	if (game->map[y][x] == FLOOR)
 	{
-		game->map[y][x] = 'P';
+		game->map[y][x] = PLAYER;
 		game->x_axis = x;
 		game->y_axis = y;
 		game->counter++;
 	}
-	if (game->map[y][x] == 'C')
+	if (game->map[y][x] == COLLECTABLE)
 	{
-		game->map[y][x] = 'P';
+		game->map[y][x] = PLAYER;
 		game->x_axis = x;
 		game->y_axis = y;
 		game->collectables--;
@@ -41,7 +41,7 @@ static int	move_2_right(t_game_construct *game, int x, int y)
 
 static int	wall_check(int current_position)
 {
-	if (current_position == '1')
+	if (current_position == WALL)
 		return (0);
 	return (1);
 }
@@ -54,21 +54,21 @@ static int	go_down_up(t_game_construct *game, int movement)
 
 	x = game->x_axis;
 	y = game->y_axis;
-	if (movement == 13)
+	if (movement == UP)
 	{
 		y--;
 		z = move_2_right(game, x, y);
 		if (!z)
 			return (0);
-		game->map[y + 1][x] = '0';
+		game->map[y + 1][x] = FLOOR;
 	}
-	else if (movement == 1)
+	else if (movement == DOWN)
 	{
 		y++;
 		z = move_2_right(game, x, y);
 		if (!z)
 			return (0);
-		game->map[y - 1][x] = '0';
+		game->map[y - 1][x] = FLOOR;
 	}
 	printf("The number of steps: %i\n", game->counter);
 	printf("The number of pizza should be eaten: %i\n", game->collectables);
@@ -83,21 +83,21 @@ static int	go_left_right(t_game_construct *game, int movement)
 
 	x = game->x_axis;
 	y = game->y_axis;
-	if (movement == 0)
+	if (movement == LEFT)
 	{
 		x--;
 		z = move_2_right(game, x, y);
 		if (!z)
 			return (0);
-		game->map[y][x + 1] = '0';
+		game->map[y][x + 1] = FLOOR;
 	}
-	else if (movement == 2)
+	else if (movement == RIGHT)
 	{
 		x++;
 		z = move_2_right(game, x, y);
 		if (!z)
 			return (0);
-		game->map[y][x - 1] = '0';
+		game->map[y][x - 1] = FLOOR;
 	}
 	printf("The number of steps: %i\n", game->counter);
 	printf("The number of pizza should be eaten: %i\n", game->collectables);
@@ -110,11 +110,11 @@ int	handle_keyboard_event(int command, t_game_construct *game)
 	char	score_str[10];
 	char	step_str[10];
 
-	if (command == 53 || command == 17)
+	if (command == ESC || command == X)
 		exit_game(game);
-	if (command == 13 || command == 1)
+	if (command == UP || command == DOWN)
 		mode = go_down_up(game, command);
-	if (command == 0 || command == 2)
+	if (command == LEFT || command == RIGHT)
 		mode = go_left_right(game, command);
 	if (mode)
 	{

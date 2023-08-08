@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: zmunkhjargal <zmunkhjargal@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 14:15:55 by zmunkhja          #+#    #+#             */
-/*   Updated: 2022/06/29 13:00:45 by zmunkhja         ###   ########.fr       */
+/*   Updated: 2023/07/29 14:25:36 by zmunkhjarga      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../headers/get_next_line.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -20,7 +20,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	str = (char *)malloc(sizeof(*s) * (len + 1));
 	if (str == 0)
-		return (NULL);
+		return (0);
 	i = 0;
 	j = 0;
 	while (s[i])
@@ -86,10 +86,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	i = 0;
 	j = 0;
 	if (!s1 || !s2)
-		return (NULL);
+		return (0);
 	joint = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!joint)
-		return (NULL);
+		return (0);
 	while (s1[i] != '\0')
 	{
 		joint[i] = s1[i];

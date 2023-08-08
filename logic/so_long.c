@@ -6,7 +6,7 @@
 /*   By: zmunkhjargal <zmunkhjargal@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:34:10 by zmunkhja          #+#    #+#             */
-/*   Updated: 2023/07/04 16:28:43 by zmunkhjarga      ###   ########.fr       */
+/*   Updated: 2023/08/08 15:13:05 by zmunkhjarga      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ static void	*ft_memset(void *game, int counter, size_t length)
 	return (game);
 }
 
-int	close_game(void){
+
+int	close_game(void)
+{
 	exit(0);
 }
 
@@ -50,10 +52,12 @@ int	main(int argc, char **argv)
 		exit(1);
 	}
 	ft_memset(&game, 0, sizeof(t_game_construct));
+	check_file_type(argv[1], &game);
 	read_map(&game, argv);
-	if (game.map != 0)
+	if (game.map != 0 )
 	{
 		check_errors(&game);
+		check_valid_map(&game);
 		game.mlxpointer = mlx_init();
 		game.winpointer = mlx_new_window(game.mlxpointer, (game.map_width * 40),
 				(game.map_height * 40), "so_long");

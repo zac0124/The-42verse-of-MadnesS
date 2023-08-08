@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphic.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: zmunkhjargal <zmunkhjargal@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:33:55 by zmunkhja          #+#    #+#             */
-/*   Updated: 2023/05/27 16:49:19 by zmunkhja         ###   ########.fr       */
+/*   Updated: 2023/08/07 15:51:56 by zmunkhjarga      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,17 @@ void	insert_images(t_game_construct *game)
 
 void	construct(t_game_construct *game, int height, int width)
 {
-	if (game->map[height][width] == '1')
+	if (game->map[height][width] == WALL)
 		mlx_put_image_to_window(game->mlxpointer,
 			game->winpointer, game->wall, width * 40, height * 40);
-	if (game->map[height][width] == 'C')
+	if (game->map[height][width] == COLLECTABLE)
 		render_collectable(game, height, width);
-	if (game->map[height][width] == 'P')
+	if (game->map[height][width] == PLAYER)
 		render_player(game, height, width);
-	if (game->map[height][width] == 'E')
+	if (game->map[height][width] == MAP_EXIT)
 		mlx_put_image_to_window(game->mlxpointer,
 			game->winpointer, game->exit, width * 40, height * 40);
-	if (game->map[height][width] == '0')
+	if (game->map[height][width] == FLOOR)
 		mlx_put_image_to_window(game->mlxpointer,
 			game->winpointer, game->floor, width * 40, height * 40);
 }
