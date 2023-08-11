@@ -22,7 +22,6 @@ static void	*ft_memset(void *game, int counter, size_t length)
 	return (game);
 }
 
-
 int	close_game(void)
 {
 	exit(0);
@@ -54,7 +53,7 @@ int	main(int argc, char **argv)
 	ft_memset(&game, 0, sizeof(t_game_construct));
 	check_file_type(argv[1], &game);
 	read_map(&game, argv);
-	if (game.map != 0 )
+	if (game.map != 0)
 	{
 		check_errors(&game);
 		check_valid_map(&game);

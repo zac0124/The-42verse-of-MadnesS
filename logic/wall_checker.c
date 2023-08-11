@@ -51,12 +51,9 @@ void	wall_validation(t_game_construct *game)
 
 	vertical_walls = vertical_wall(game);
 	horizontal_walls = horizontal_wall(game);
-
 	if (!vertical_walls || !horizontal_walls)
 	{
 		printf("\nError!\nCould not find valid wall in this map\n");
 		exit_game(game);
 	}
-
-	
 }

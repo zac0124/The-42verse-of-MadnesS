@@ -49,10 +49,10 @@ void	game_validation(t_game_construct *game)
 		y++;
 	}
 	if (
-		game->player_count != 1 ||
-	 	game->collectables < 1 ||
-	 	game->exit_count != 1
-			)
+		game->player_count != 1
+		|| game->collectables < 1
+		|| game->exit_count != 1
+	)
 	{
 		printf("\nError!\nGame validation went wrong!\n");
 		exit_game(game);
