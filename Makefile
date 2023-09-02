@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: zmunkhjargal <zmunkhjargal@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/31 15:53:11 by zmunkhja          #+#    #+#              #
-#    Updated: 2023/08/31 15:53:13 by zmunkhja         ###   ########.fr        #
+#    Updated: 2023/09/02 16:41:08 by zmunkhjarga      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SOURCE = source/*.c
+SOURCE = source/*.c main.c
 
 OBJECT	= $(:%.o=%.c)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: zmunkhjargal <zmunkhjargal@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 15:54:21 by zmunkhja          #+#    #+#             */
-/*   Updated: 2023/08/31 15:54:23 by zmunkhja         ###   ########.fr       */
+/*   Updated: 2023/09/02 16:16:43 by zmunkhjarga      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ long    ft_atoi(const char *str)
 
     while(is_string(*(char *) str, "\t\n\v\f\r"))
         str++;
-    if(*str == "-")
+    if(*str == '-')
         sign *= -1;
-    if(*str == "-" || *str == "+")
+    if(*str == '-' || *str == '+')
         str++;
     while(*str >= '0' && *str <= '9')
     {

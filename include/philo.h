@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: zmunkhjargal <zmunkhjargal@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 15:53:39 by zmunkhja          #+#    #+#             */
-/*   Updated: 2023/08/31 15:53:41 by zmunkhja         ###   ########.fr       */
+/*   Updated: 2023/09/02 17:13:08 by zmunkhjarga      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,21 +63,10 @@ long    ft_atoi(const char *str);
 int input_checker(char  **argv);
 int ft_usleep(useconds_t time);
 int ft_strcmp(char *s1, char *s2);
-int	init(t_general *data, char **argv, int argc);
+int	init(t_general **data, char **argv, int argc);
 int thread_init(t_general *data);
-int case_one(t_general *data);
+int first_case(t_general *data);
 int print_error(char *str, t_general *data);
-
-
-
-
-
-
-
-
-
-
-
-
+int main(int argc, char **argv);
 
 #endif
