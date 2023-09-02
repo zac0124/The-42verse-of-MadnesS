@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmunkhja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: zmunkhjargal <zmunkhjargal@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 15:54:12 by zmunkhja          #+#    #+#             */
-/*   Updated: 2023/08/31 15:54:14 by zmunkhja         ###   ########.fr       */
+/*   Updated: 2023/09/02 16:14:26 by zmunkhjarga      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void monitor(void *pointer)
+void *monitor(void *pointer)
 {
     t_philo *philo = (t_philo *)pointer;
 
@@ -32,6 +32,7 @@ void monitor(void *pointer)
         }
         pthread_mutex_unlock(&philo->lock);
     }
+    return NULL;
 }
 
 void    *supervisor(void *pointer)
@@ -58,6 +59,7 @@ void    *supervisor(void *pointer)
          pthread_mutex_unlock(&philo->lock);
          usleep(1000);
     }
+    return NULL;
 }
 
 void    *routine(void *pointer)
@@ -77,6 +79,7 @@ void    *routine(void *pointer)
     }
     if(pthread_join(philo->thread_1, NULL) != 0)
         return  ((void *) 1);
+    return ((void * )0);
 }
 
 int thread_init(t_general *data)
@@ -93,7 +96,7 @@ int thread_init(t_general *data)
     }
     while (++i < data->number_of_philo)
     {
-        if(pthread_create(&data->philos[i], NULL, &routine, &data->philos[i]) != 0)
+        if(pthread_create(&data->thread_id[i], NULL, &routine, &data->philos[i]) != 0)
             return(print_error("create error", data));
         ft_usleep(1);
     }
@@ -104,5 +107,4 @@ int thread_init(t_general *data)
 			return (print_error("join error", data));
     }
     return (0);
-
 }

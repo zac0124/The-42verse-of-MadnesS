@@ -14,7 +14,7 @@ NAME = philo
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror/
+CFLAGS = -Wall -Wextra -Werror
 
 SOURCE = source/*.c
 
