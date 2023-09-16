@@ -6,7 +6,7 @@
 /*   By: zmunkhjargal <zmunkhjargal@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 15:54:04 by zmunkhja          #+#    #+#             */
-/*   Updated: 2023/09/02 17:13:04 by zmunkhjarga      ###   ########.fr       */
+/*   Updated: 2023/09/02 17:07:42 by zmunkhjarga      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int     start(t_general *data, char **argv, int argc)
 	return (0);
 }
 
-int	init(t_general **data, char **argv, int argc)
+int	init(t_general *data, char **argv, int argc)
 {
 	if (start(data, argv, argc))
 		return (1);
