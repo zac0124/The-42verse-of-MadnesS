@@ -31,7 +31,7 @@ void	*monitor(void *pointer)
 		}
 		pthread_mutex_unlock(&philo->lock);
 	}
-	return (NULL);
+	return ((void *)0);
 }
 
 void	*supervisor(void *pointer)
@@ -58,7 +58,7 @@ void	*supervisor(void *pointer)
 		pthread_mutex_unlock(&philo->lock);
 		usleep(1000);
 	}
-	return (NULL);
+	return ((void *)0);
 }
 
 void	*routine(void *pointer)

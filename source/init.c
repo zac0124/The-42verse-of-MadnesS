@@ -75,7 +75,7 @@ int	start(t_general *data, char **argv, int argc)
 		data->number_of_meals = (int) ft_atoi(argv[5]);
 	if (data->philo_num <= 0 || data->philo_num > 200 || data->time_to_die < 0
 		|| data->time_to_eat < 0 || data->time_to_sleep < 0)
-		return (print_error("start errer", 0));
+		return (print_error("start errer", NULL));
 	data->philo_dead = 0;
 	data->finished = 0;
 	pthread_mutex_init(&data->write, NULL);

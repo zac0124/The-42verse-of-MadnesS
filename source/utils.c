@@ -53,9 +53,9 @@ int	input_checker(char **argv)
 	int		j;
 
 	i = 1;
-	j = 0;
 	while (argv[i])
 	{
+		j = 0;
 		while (argv[i][j])
 		{
 			if (argv[i][j] == ' ')
@@ -64,7 +64,7 @@ int	input_checker(char **argv)
 				continue ;
 			}
 			if (argv[i][j] < 48 || argv[i][j] > 57)
-				return (print_error("error", 0));
+				return (print_error("error", NULL));
 			j++;
 		}
 		i++;
