@@ -6,6 +6,7 @@
 *.ko
 *.obj
 *.elf
+*.slo
 
 # Linker output
 *.ilk
@@ -21,6 +22,7 @@
 *.a
 *.la
 *.lo
+*.lai
 
 # Shared objects (inc. Windows DLLs)
 *.dll
@@ -41,6 +43,10 @@
 *.su
 *.idb
 *.pdb
+
+# Fortran module files
+*.mod
+*.smod
 
 # Kernel Module Compile Results
 *.mod*
