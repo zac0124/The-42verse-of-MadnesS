@@ -1,0 +1,3 @@
+[submodule "minitalk"]
+	path = minitalk
+	url = https://github.com/zac0124/minitalk.git
