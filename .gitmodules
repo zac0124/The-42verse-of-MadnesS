@@ -19,3 +19,6 @@
 [submodule "printf"]
 	path = printf
 	url = https://github.com/zac0124/printf.git
+[submodule "Libft"]
+	path = Libft
+	url = https://github.com/zac0124/Libft.git
