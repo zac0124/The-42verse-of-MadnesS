@@ -4,3 +4,12 @@
 [submodule "born2beroot"]
 	path = born2beroot
 	url = https://github.com/zac0124/born2beroot.git
+[submodule "so_long"]
+	path = so_long
+	url = https://github.com/zac0124/so_long.git
+[submodule "minishell"]
+	path = minishell
+	url = https://github.com/zac0124/minishell.git
+[submodule "philo"]
+	path = philo
+	url = https://github.com/zac0124/philo.git
