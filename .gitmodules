@@ -13,3 +13,6 @@
 [submodule "philo"]
 	path = philo
 	url = https://github.com/zac0124/philo.git
+[submodule "get_next_line"]
+	path = get_next_line
+	url = https://github.com/zac0124/get_next_line.git
